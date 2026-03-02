@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="nn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f766e" />
+  <title>Dokumentoversettar</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <h1>Oversett dokument</h1>
+      <p>Ta bilde av norsk tekst og få ukrainsk opplesing.</p>
+    </header>
+
+    <section class="panel actions">
+      <button id="startCameraBtn" class="btn primary">Start kamera</button>
+      <button id="captureBtn" class="btn" disabled>Ta bilde</button>
+      <label class="btn file-btn" for="fileInput">Last opp bilde</label>
+      <input id="fileInput" type="file" accept="image/*" capture="environment" />
+    </section>
+
+    <section class="panel media-panel">
+      <video id="cameraFeed" playsinline autoplay muted></video>
+      <canvas id="snapshotCanvas"></canvas>
+      <img id="previewImage" alt="Forhandsvising av dokument" />
+    </section>
+
+    <section class="panel toggles">
+      <label class="switch-row">
+        <input id="autoSpeak" type="checkbox" checked />
+        <span>Les automatisk opp på ukrainsk</span>
+      </label>
+    </section>
+
+    <section class="panel status" id="statusBox">Klar.</section>
+
+    <section class="panel text-block">
+      <h2>Norsk tekst</h2>
+      <textarea id="norwegianText" rows="8" placeholder="Tekst dukkar opp her..." readonly></textarea>
+    </section>
+
+    <section class="panel text-block">
+      <h2>Ukrainsk tekst</h2>
+      <textarea id="ukrainianText" rows="8" placeholder="Omsetjing dukkar opp her..."></textarea>
+      <div class="actions-inline">
+        <button id="speakBtn" class="btn" disabled>Les opp</button>
+        <button id="stopBtn" class="btn ghost">Stopp</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
